@@ -1,0 +1,26 @@
+import math
+def euclideanDistance(x,y):
+    euclid = math.sqrt(((x[0]-x[1])**2)+((y[0]-y[1])**2))
+    return euclid
+
+def getpoints():
+    points = []
+    for i in range(2):
+        point_input = input(f"{i+1}. noktanın kordinatlarını giriniz (x,y): ")
+        x, y = map(float, point_input.split(','))
+        points.append((x, y))
+    return points
+
+def calculatedistance(points):
+    distances = []
+    for i in range(len(points)):
+        for j in range(i+1, len(points)):
+            distance = euclideanDistance(points[i],points[j])
+            distances.append(distance)
+    return distances
+    
+
+points = getpoints()
+distances = calculatedistance(points)
+
+print("tüm noktalar arasındaki mesafe:", distances)
